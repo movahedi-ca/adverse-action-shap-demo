@@ -1,0 +1,303 @@
+{
+  "dataset": {
+    "name": "UCI Statlog German Credit (1000 rows)",
+    "url": "https://archive.ics.uci.edu/dataset/144/statlog+german+credit+data",
+    "rows_used": 1000,
+    "target": "1 = approved (good credit), 0 = denied (bad credit)",
+    "note": "German Credit ordered categorical codes were mapped to human-meaningful notice features; revolving-utilization, late-payment, DTI and income are seeded deterministic proxies derived from the real codes."
+  },
+  "model": {
+    "type": "LogisticRegression (C=1.0), StandardScaler, features standardized",
+    "train_rows": 800,
+    "test_rows": 200,
+    "test_accuracy": 0.72,
+    "random_state": 42,
+    "base_value_log_odds": 1.0727
+  },
+  "features": [
+    {
+      "name": "credit_utilization_pct",
+      "description": "Revolving credit utilization as a percentage of the credit limit"
+    },
+    {
+      "name": "late_payments_30d",
+      "description": "Number of payments 30 or more days past due in the last 24 months"
+    },
+    {
+      "name": "debt_to_income_pct",
+      "description": "Total monthly debt obligations as a percentage of monthly income"
+    },
+    {
+      "name": "annual_income",
+      "description": "Applicant annual income in Canadian dollars"
+    },
+    {
+      "name": "employment_length_months",
+      "description": "Time with current employer in months"
+    },
+    {
+      "name": "loan_duration_months",
+      "description": "Requested loan duration in months"
+    },
+    {
+      "name": "housing_code",
+      "description": "Housing: 0=rent, 1=own, 2=free"
+    },
+    {
+      "name": "residence_years",
+      "description": "Years at current residence"
+    },
+    {
+      "name": "age_years",
+      "description": "Applicant age in years"
+    },
+    {
+      "name": "existing_credits",
+      "description": "Number of existing credits at this bank"
+    },
+    {
+      "name": "people_liable",
+      "description": "Number of people the applicant is liable to support"
+    }
+  ],
+  "global_feature_importance": [
+    {
+      "feature": "credit_utilization_pct",
+      "mean_abs_shap": 0.7149
+    },
+    {
+      "feature": "loan_duration_months",
+      "mean_abs_shap": 0.3664
+    },
+    {
+      "feature": "annual_income",
+      "mean_abs_shap": 0.1855
+    },
+    {
+      "feature": "debt_to_income_pct",
+      "mean_abs_shap": 0.1825
+    },
+    {
+      "feature": "age_years",
+      "mean_abs_shap": 0.1392
+    },
+    {
+      "feature": "employment_length_months",
+      "mean_abs_shap": 0.1326
+    },
+    {
+      "feature": "late_payments_30d",
+      "mean_abs_shap": 0.0911
+    },
+    {
+      "feature": "residence_years",
+      "mean_abs_shap": 0.0534
+    },
+    {
+      "feature": "housing_code",
+      "mean_abs_shap": 0.0434
+    },
+    {
+      "feature": "people_liable",
+      "mean_abs_shap": 0.0225
+    },
+    {
+      "feature": "existing_credits",
+      "mean_abs_shap": 0.0172
+    }
+  ],
+  "applicants": [
+    {
+      "id": "denied_long_loan_duration",
+      "prediction": 0,
+      "predicted_probability_approved": 0.1991,
+      "features": {
+        "credit_utilization_pct": 84.8,
+        "late_payments_30d": 7,
+        "debt_to_income_pct": 35.3,
+        "annual_income": 67547.0,
+        "employment_length_months": 24,
+        "loan_duration_months": 45,
+        "housing_code": 2,
+        "residence_years": 4,
+        "age_years": 23,
+        "existing_credits": 1,
+        "people_liable": 1
+      },
+      "shap_values": {
+        "credit_utilization_pct": -0.8826,
+        "late_payments_30d": -0.1871,
+        "debt_to_income_pct": -0.1113,
+        "annual_income": -0.0542,
+        "employment_length_months": -0.0547,
+        "loan_duration_months": -1.0256,
+        "housing_code": 0.1203,
+        "residence_years": -0.0744,
+        "age_years": -0.1685,
+        "existing_credits": -0.0142,
+        "people_liable": -0.0121
+      },
+      "top_reasons": [
+        {
+          "feature": "loan_duration_months",
+          "shap_value": -1.0256,
+          "value": 45
+        },
+        {
+          "feature": "credit_utilization_pct",
+          "shap_value": -0.8826,
+          "value": 84.8
+        },
+        {
+          "feature": "late_payments_30d",
+          "shap_value": -0.1871,
+          "value": 7
+        }
+      ]
+    },
+    {
+      "id": "denied_high_utilization",
+      "prediction": 0,
+      "predicted_probability_approved": 0.3208,
+      "features": {
+        "credit_utilization_pct": 90.6,
+        "late_payments_30d": 0,
+        "debt_to_income_pct": 39.7,
+        "annual_income": 53333.0,
+        "employment_length_months": 60,
+        "loan_duration_months": 24,
+        "housing_code": 0,
+        "residence_years": 4,
+        "age_years": 24,
+        "existing_credits": 1,
+        "people_liable": 1
+      },
+      "shap_values": {
+        "credit_utilization_pct": -1.0408,
+        "late_payments_30d": 0.1001,
+        "debt_to_income_pct": -0.2069,
+        "annual_income": -0.2406,
+        "employment_length_months": 0.1054,
+        "loan_duration_months": -0.1937,
+        "housing_code": -0.0926,
+        "residence_years": -0.0744,
+        "age_years": -0.1531,
+        "existing_credits": -0.0142,
+        "people_liable": -0.0121
+      },
+      "top_reasons": [
+        {
+          "feature": "credit_utilization_pct",
+          "shap_value": -1.0408,
+          "value": 90.6
+        },
+        {
+          "feature": "annual_income",
+          "shap_value": -0.2406,
+          "value": 53333.0
+        },
+        {
+          "feature": "debt_to_income_pct",
+          "shap_value": -0.2069,
+          "value": 39.7
+        }
+      ]
+    },
+    {
+      "id": "approved_low_utilization",
+      "prediction": 1,
+      "predicted_probability_approved": 0.9651,
+      "features": {
+        "credit_utilization_pct": 25.5,
+        "late_payments_30d": 0,
+        "debt_to_income_pct": 15.0,
+        "annual_income": 101494.0,
+        "employment_length_months": 96,
+        "loan_duration_months": 12,
+        "housing_code": 1,
+        "residence_years": 4,
+        "age_years": 49,
+        "existing_credits": 1,
+        "people_liable": 1
+      },
+      "shap_values": {
+        "credit_utilization_pct": 0.735,
+        "late_payments_30d": 0.1001,
+        "debt_to_income_pct": 0.3299,
+        "annual_income": 0.3909,
+        "employment_length_months": 0.2656,
+        "loan_duration_months": 0.2816,
+        "housing_code": 0.0138,
+        "residence_years": -0.0744,
+        "age_years": 0.2319,
+        "existing_credits": -0.0142,
+        "people_liable": -0.0121
+      },
+      "top_reasons": [
+        {
+          "feature": "credit_utilization_pct",
+          "shap_value": 0.735,
+          "value": 25.5
+        },
+        {
+          "feature": "annual_income",
+          "shap_value": 0.3909,
+          "value": 101494.0
+        },
+        {
+          "feature": "debt_to_income_pct",
+          "shap_value": 0.3299,
+          "value": 15.0
+        }
+      ]
+    },
+    {
+      "id": "approved_older_age",
+      "prediction": 1,
+      "predicted_probability_approved": 0.7613,
+      "features": {
+        "credit_utilization_pct": 43.2,
+        "late_payments_30d": 5,
+        "debt_to_income_pct": 31.9,
+        "annual_income": 64390.0,
+        "employment_length_months": 24,
+        "loan_duration_months": 24,
+        "housing_code": 1,
+        "residence_years": 3,
+        "age_years": 57,
+        "existing_credits": 1,
+        "people_liable": 1
+      },
+      "shap_values": {
+        "credit_utilization_pct": 0.2522,
+        "late_payments_30d": -0.1051,
+        "debt_to_income_pct": -0.0374,
+        "annual_income": -0.0956,
+        "employment_length_months": -0.0547,
+        "loan_duration_months": -0.1937,
+        "housing_code": 0.0138,
+        "residence_years": -0.0212,
+        "age_years": 0.3551,
+        "existing_credits": -0.0142,
+        "people_liable": -0.0121
+      },
+      "top_reasons": [
+        {
+          "feature": "age_years",
+          "shap_value": 0.3551,
+          "value": 57
+        },
+        {
+          "feature": "credit_utilization_pct",
+          "shap_value": 0.2522,
+          "value": 43.2
+        },
+        {
+          "feature": "loan_duration_months",
+          "shap_value": -0.1937,
+          "value": 24
+        }
+      ]
+    }
+  ]
+}
